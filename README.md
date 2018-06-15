@@ -107,14 +107,42 @@ Lets look at the scheduling results.
 The first part of the scheduling results tells the mapping schedule of the 1st memory hierarchy (PE array).
 IC and OC will be mapped to the PE array.
 
+![blocking](https://image.ibb.co/i8wHUd/1.png)
+
 [‘IC’, 16, 4]
 
 This tells that the input channel will be: 
 *Blocked* with 16 IC unit each.
 *Partitioned* through 4 row or column PE
 
+[‘OC’, 6, 8]
+
+This tells that the output channel will be: 
+*Blocked* with 6 OC unit each.
+*Partitioned* through 8 row or column PE
+
+![mapping](https://image.ibb.co/cgNrpd/2.png)
+
 Since the blocked IC and OC has a combination of 32 patterns, 
-Each of the patterns will be mapped to a PE, utilizing 32PE.
-This is better if you visiulize..
+Each of the patterns will be mapped to a PE, utilizing 32PEs.
+
+
+Now, the latter part in scheduling:
+
+[('ON', 32, 1), None, None, None, None, None, None]] 
+
+This tells the mapping schedule of the 2nd memory hierarchy (Buffer)
+ON, or the batched input is executed as an outer loop.
+
+To wrap up, as a schedule given
+
+[[('IC', 16, 4), ('OC', 6, 8), None, None, None, None, None], [('ON', 32, 1), None, None, None, None, None, None]]
+
+You can imagine a loopnest like this:
+
+![mapping](https://image.ibb.co/diwsUd/image.jpg)
+
+The weights are reused through ON loops, getting better efficiency!
+
 
 
