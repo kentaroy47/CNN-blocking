@@ -78,14 +78,20 @@ Lets say you are running a simple FC network on a simple asic.
 
 Network:
     "input_fmap_channel":64, #64 input neurons
+    
     "output_fmap_channel":48, #48 output neurons
+    
     "batch_size":32
+    
     #number of parameters: 64x48=3072
     
 ASIC:
     "mem_levels": 2,
+    
     "capacity":[256, 256000],
-    "parallel_count":[64, 1]  # 64xPE array   
+    
+    "parallel_count":[64, 1]  # 64xPE array
+    
 
 ```
 python ./tools/run_optimizer.py -v ./examples/arch/fc_simple_arch.json ./examples/network/64x48fc_simple.json
