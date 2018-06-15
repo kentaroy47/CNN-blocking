@@ -73,10 +73,13 @@ python ./tools/run_optimizer.py -v -n user_defined_pickle_filename dataflow_expl
 ```
 
 # Tutorials
+
 ## Understanding the scheduling results.
+
 Lets say you are running a simple FC network on a simple asic.
 
 Network:
+    
     "input_fmap_channel":64, #64 input neurons
     
     "output_fmap_channel":48, #48 output neurons
@@ -86,12 +89,15 @@ Network:
     #number of parameters: 64x48=3072
     
 ASIC:
+    
     "mem_levels": 2,
     
     "capacity":[256, 256000],
     
     "parallel_count":[64, 1]  # 64xPE array
     
+    
+Run this..
 
 ```
 python ./tools/run_optimizer.py -v ./examples/arch/fc_simple_arch.json ./examples/network/64x48fc_simple.json
