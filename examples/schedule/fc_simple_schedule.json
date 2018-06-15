@@ -1,0 +1,17 @@
+{
+    "schedule_hint": {
+        "IC": {
+           "level0":{
+               "order":0,
+               "partitioning_size":1
+           }
+        },
+        "OC": {
+           "level0":{
+               "order":1,
+               "partitioning_size":64
+           }
+        }
+       
+    }
+}
